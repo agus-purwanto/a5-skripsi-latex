@@ -1,0 +1,209 @@
+
+\documentclass[
+10pt, % The default document font size, options: 10pt, 11pt, 12pt
+%oneside, % Two side (alternating margins) for binding by default, uncomment to switch to one side
+english, % ngerman for German
+singlespacing, % Single line spacing, alternatives: onehalfspacing or doublespacing
+%draft, % Uncomment to enable draft mode (no pictures, no links, overfull hboxes indicated)
+%nolistspacing, % If the document is onehalfspacing or doublespacing, uncomment this to set spacing in lists to single
+liststotoc, % Uncomment to add the list of figures/tables/etc to the table of contents
+toctotoc, % Uncomment to add the main table of contents to the table of contents
+%parskip, % Uncomment to add space between paragraphs
+%nohyperref, % Uncomment to not load the hyperref package
+headsepline, % Uncomment to get a line under the header
+%chapterinoneline, % Uncomment to place the chapter title next to the number on one line
+%consistentlayout, % Uncomment to change the layout of the declaration, abstract and acknowledgements pages to match the default layout
+]{skripsiSTKIP} % The class file specifying the document structure
+
+%\usepackage[utf8]{inputenc} % Required for inputting international characters
+%\usepackage[T1]{fontenc} % Output font encoding for international characters
+
+%\usepackage{palatino} % Use the Palatino font by default
+%\usepackage{mathpazo}
+%\usepackage{fouriernc}
+%\usepackage{pdfpages}
+
+%\usepackage[font={small,it}]{caption}
+%\DeclareCaptionFont{xipt}{\fontsize{11}{13}\fontfamily{phv}\selectfont}
+%\usepackage[font=xipt,labelfont=bf]{caption}
+
+\usepackage[style=apa]{biblatex} % Use the bibtex backend with the authoryear citation style (which resembles APA)
+\DeclareLanguageMapping{bahasai}{american-apa}
+
+\addbibresource{example.bib} % The filename of the bibliography
+
+\usepackage[autostyle=true]{csquotes} % Required to generate language-dependent quotes in the bibliography
+\usepackage{totcount}
+\newtotcounter{citenum}
+\AtEveryBibitem{\stepcounter{citenum}}
+
+
+%----------------------------------------------------------------------------------------
+%	THESIS INFORMATION
+%----------------------------------------------------------------------------------------
+
+\thesistitle[panduan]{\textit{Guidance of} Penulisan Skripsi di Sekolah
+Tinggi Keguruan dan Ilmu Pendidikan  (STKIP) Surya} % Your thesis title, this is used in the title and abstract, print it elsewhere with \ttitle
+
+\subJudulSkripsi{SMP XYZ Kelas 007}
+\pembimbingPertama{Dr. James Smith} 
+\nikPembimbingPertama{34567}
+\pembimbingKedua{Dr. Polan Polani} % Your supervisor's name, this is used in the title page, print it elsewhere with \supname
+\nikPembimbingKedua{456888}
+
+\pengujiPertama{Dr. Abcde}
+\nikPengujiPertama{12345}
+\pengujiKedua{Dr. Pqwerty}
+\nikPengujiKedua{78990}
+\pengujiKetiga{Dr. Ketiga}
+\nikPengujiKetiga{3}
+\pengujiKeempat{}
+\nikPengujiKeempat{}
+
+\kaProdi{Dr. Wiwid \textsc{Juwar}} %Diisi dengan nama Ka Prodi
+\nikKaProdi{007} %Diisi dengan Nomor Karyawan Ka Prodi
+\degree{Sarjana Pendidikan (S.Pd.)} % tetap / jangan diubah
+\penulis{Nama Mahasiswa} % Silahkan tulis Nama Mahasiswa
+\nim{1234567}
+\addresses{Tangerang} % Your address, this is not currently used anywhere in the template, print it elsewhere with \addressname
+\tahun{2017} % Diisi dengan tahun yudisium
+\bulan{Januari} % Diisi dengan bulan yudisium
+\tanggal{25} % Diisi dengan tanggal yudisium
+\hari{Rabu} % Diisi dengan hari yudisium
+
+\def\warnaProdi{warnaPMat}%pilihannya adalah warnaPMat, warnaPFis, warnaPTIK dan warna PKim.  Harus sesuai dengan prodi
+\prodi{Program Studi Pendidikan Matematika} % Your subject area, this is not currently used anywhere in the template, print it elsewhere with \subjectname
+\kataKunci{pembelajaran berbasis masalah, keterampilan berpikir kreatif, gerak melingkar} % Keywords for your thesis, this is not currently used anywhere in the template, print it elsewhere with \keywordnames
+\institusi{\href{http://www.stkipsurya.ac.id/}{Sekolah Tinggi Keguruan dan Ilmu Pendidikan Surya}} % Your university's name and URL, this is used in the title page and abstract, print it elsewhere with \univname
+\department{\href{http://department.university.com}{Program Studi Pendidikan Matematika}} % Your department's name and URL, this is used in the title page and abstract, print it elsewhere with \deptname
+\group{\href{http://researchgroup.university.com}{Research Group Name}} % Your research group's name and URL, this is used in the title page, print it elsewhere with \groupname
+\faculty{\href{http://faculty.university.com}{Faculty Name}} % Your faculty's name and URL, this is used in the title page and abstract, print it elsewhere with \facname
+
+\AtBeginDocument{
+\hypersetup{pdftitle=\ttitle} % Set the PDF's title to your title
+\hypersetup{pdfauthor=\penulis} % Set the PDF's author to your name
+\hypersetup{pdfkeywords=\kataKunciTulis} % Set the PDF's keywords to your keywords
+}
+
+
+%-----------------judul bab mulai
+%\usepackage{titlesec, blindtext, color}
+%\definecolor{gray75}{gray}{0.75}
+%\newcommand{\hsp}{\hspace{20pt}}
+%\titleformat{\chapter}[hang]{\huge\fontfamily{phv}\selectfont}{\thechapter\hsp\textcolor{orange}{|}\hsp}{0pt}{\huge\fontfamily{phv}\selectfont}
+%-----------------judul bab selesai
+
+
+
+%---------------
+
+%\renewcommand{\figcapfont}{\fontfamily=phv\selectfont}
+%\DeclareCaptionFont{xipt}{\fontfamily{phv}\selectfont\small}
+%\usepackage[font=xipt,labelfont=bf]{caption}
+
+\DefineBibliographyStrings{english}{%
+  bibliography = {Daftar Pustaka},% replace "references" with "bibliography"  for `book`/`report`
+}
+
+
+\begin{document}
+
+\frontmatter % Use roman page numbering style (i, ii, iii, iv...) for the pre-content pages
+
+\pagestyle{plain} % Default to the plain heading style until the thesis style is called for the body content
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+%  \setprodi{pfis}
+
+\halamanJudulLuar
+\halamanJudul
+\input{depan/halamanKeaslian}
+\input{depan/halamanPengesahan}
+\input{depan/halamanPersetujuan}
+
+%----------------------------------------------------------------------------------------
+%	DECLARATION PAGE
+%----------------------------------------------------------------------------------------
+
+%\begin{declaration}
+%\addchaptertocentry{\authorshipname} % Add the declaration to the table of contents
+%\noindent I, \penulis, declare that this thesis titled, \enquote{\ttitle} and the work presented in it are my own. I confirm that:
+
+%\begin{itemize} 
+%\item This work was done wholly or mainly while in candidature for a research degree at this University.
+%\item Where any part of this thesis has previously been submitted for a degree or any other qualification at this University or any other institution, this has been clearly stated.
+%\item Where I have consulted the published work of others, this is always clearly attributed.
+%\item Where I have quoted from the work of others, the source is always given. With the exception of such quotations, this thesis is entirely my own work.
+%\item I have acknowledged all main sources of help.
+%\item Where the thesis is based on work done by myself jointly with others, I have made clear exactly what was done by others and what I have contributed myself.\\
+%\end{itemize}
+ 
+%\noindent Signed:\\
+%\rule[0.5em]{25em}{0.5pt} % This prints a line for the signature
+ 
+%\noindent Date:\\
+%\rule[0.5em]{25em}{0.5pt} % This prints a line to write the date
+%\end{declaration}
+
+%\cleardoublepage
+
+
+%\input{depan/halamanRingkasan}
+\input{depan/pengantar}
+\input{depan/halamanRingkasan}
+
+\tableofcontents % Prints the main table of contents
+
+\listoffigures % Prints the list of figures
+
+\listoftables % Prints the list of tables
+
+
+%----------------------------------------------------------------------------------------
+%	DEDICATION
+%----------------------------------------------------------------------------------------
+
+%\dedicatory{For/Dedicated to/To my\ldots} 
+
+%----------------------------------------------------------------------------------------
+%	THESIS CONTENT - CHAPTERS
+%----------------------------------------------------------------------------------------
+
+\mainmatter % Begin numeric (1,2,3...) page numbering
+
+\pagestyle{thesis} % Return the page headers back to the "thesis" style
+
+% Include the chapters of the thesis as separate files from the Chapters folder
+% Uncomment the lines as you write the chapters
+
+\include{bab/aturanUmum}
+\section{sectikon}
+\subsection{subsection}
+\subsubsection{subsubsection}
+\include{bab/sistematika}
+\include{bab/judul}
+\include{bab/tabel}
+\include{bab/gambar}
+\include{bab/acuan}
+
+
+\appendix % Cue to tell LaTeX that the following "chapters" are Appendices
+
+% Include the appendices of the thesis as separate files from the Appendices folder
+% Uncomment the lines as you write the Appendices
+
+\include{Appendices/AppendixA}
+%\include{Appendices/AppendixB}
+%\include{Appendices/AppendixC}
+
+%----------------------------------------------------------------------------------------
+%	BIBLIOGRAPHY
+%----------------------------------------------------------------------------------------
+
+\printbibliography[heading=bibintoc]
+
+%----------------------------------------------------------------------------------------
+
+\end{document}  
