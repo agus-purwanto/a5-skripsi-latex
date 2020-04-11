@@ -1,0 +1,622 @@
+\chapter{Tabel}
+\section{Pilihan Tidak Perlunya Garis Vertikal}
+\begin{enumerate}
+\item Mari kita perhatikan tabel\\
+\begin{tabular}{|r|r|r|r|}\hline
+Senin & Selasa & Kamis & Sabtu \\ \hline
+122 &  &  2& 3\\ \hline
+122 & 8 &  2& 3\\ \hline
+122 & 885 &  2& 3\\ \hline
+122 & 878 &  2& 3\\ \hline
+\end{tabular}
+
+\item Hilangkan semua garis vertikalnya:\\
+\begin{tabular}{rrrr}\hline
+Senin & Selasa & Kamis & Sabtu \\ \hline
+122 & 88 &  2& 3\\ \hline
+122 & 8 &  2& 3\\ \hline
+122 & 885 &  2& 3\\ \hline
+122 & 878 &  2& 3\\ \hline
+\end{tabular}
+
+\item Hilangkan semua garis horizontal yang ditengah:\\
+\begin{tabular}{rrrr}\hline
+Senin & Selasa & Kamis & Sabtu \\ \hline
+122 & 88 &  2& 3\\ 
+122 & 8 &  2& 3\\ 
+122 & 885 &  2& 3\\ 
+122 & 878 &  2& 3\\ \hline
+\end{tabular}
+
+\item Pepetkan garis horizontalnya \\
+\begin{tabular}{@{}rrrr@{}}\hline
+Senin & Selasa & Kamis & Sabtu \\ \hline
+122 & 88 &  2& 3\\ 
+122 & 8 &  2& 3\\ 
+122 & 885 &  2& 3\\ 
+122 & 878 &  2& 3\\ \hline
+\end{tabular}
+
+\item Agak jauhkan jarak garis horizontal dengan menggunakan toprule, midrule dan bottomrule dari booktabs\\
+\begin{tabular}{@{}rrrr@{}}\toprule
+Senin & Selasa & Kamis & Sabtu \\ \midrule
+122 & 88 &  2& 3\\ 
+122 & 8 &  2& 3\\ 
+122 & 885 &  2& 3\\ 
+122 & 878 &  2& 3\\ \bottomrule
+\end{tabular}
+\end{enumerate}
+Mana yang paling baik ?
+
+Berikut ini adalah contoh tabel yang salah satu kolomnya mengandung
+isi yang sangat panjang:
+\begin{enumerate}
+\item Penggunaan 
+\begin{verbatim}
+\begin{minipage}[t]{0.3\textwidth}
+\end{verbatim}
+lihat Tabel~\ref{Tabel:t}
+\begin{table}[htbp]
+\centering
+\caption{Ada yang panjang sekali}
+\label{Tabel:t}
+\begin{tabular}{@{}rrrr@{}}\toprule
+Senin & Selasa & Kamis & Sabtu \\ \midrule
+122 & 
+\begin{minipage}[t]{0.3\textwidth}
+Ini adalah isi tabel yang sangat panjang untuk contoh bagaimana cara menggunakan nya, tanpa isinya terpotong.  
+\end{minipage}
+ &  2& 3\\ 
+122 & 8 &  2& 3\\ 
+122 & 885 &  2& 3\\ 
+122 & 878 &  2& 3\\ \bottomrule
+\end{tabular}
+\end{table}
+
+\item Penggunaan 
+\begin{verbatim}
+\begin{minipage}[b]{0.3\textwidth}
+\end{verbatim}
+lihat Tabel~\ref{Tabel:b}
+\begin{table}[htbp]
+\centering
+\caption{Ada yang panjang sekali}
+\label{Tabel:b}
+\begin{tabular}{@{}rrrr@{}}\toprule
+Senin & Selasa & Kamis & Sabtu \\ \midrule
+122 & 
+\begin{minipage}[b]{0.3\textwidth}
+Ini adalah isi tabel yang sangat panjang untuk contoh bagaimana cara menggunakan nya, tanpa isinya terpotong.  
+\end{minipage}
+ &  2& 3\\ 
+122 & 8 &  2& 3\\ 
+122 & 885 &  2& 3\\ 
+122 & 878 &  2& 3\\ \bottomrule
+\end{tabular}
+\end{table}
+
+\item Penggunaan 
+\begin{verbatim}
+\begin{minipage}{0.3\textwidth}
+\end{verbatim}
+lihat Tabel~\ref{Tabel}
+\begin{table}[htbp]
+\centering
+\caption{Ada yang panjang sekali}
+\label{Tabel}
+\begin{tabular}{@{}rrrr@{}}\toprule
+Senin & Selasa & Kamis & Sabtu \\ \midrule
+122 & 
+\begin{minipage}{0.3\textwidth}
+Ini adalah isi tabel yang sangat panjang untuk contoh bagaimana cara menggunakan nya, tanpa isinya terpotong.  
+\end{minipage}
+ &  2& 3\\ 
+122 & 8 &  2& 3\\ 
+122 & 885 &  2& 3\\ 
+122 & 878 &  2& 3\\ \bottomrule
+\end{tabular}
+\end{table}
+
+\end{enumerate}
+
+\section{Tabel lebih Dari Satu Halaman}
+
+Silahkan pilih Tabel~\ref{Table:midrule} atau Tabel~\ref{Table:hline}.
+Berikut adalah cara untuk memperoleh Tabel~\ref{Table:midrule}.
+\begin{verbatim}
+\begin{center}
+\begin{longtable}{@{}lll@{}}
+\caption{Contoh tabel lebih dari satu halaman}  
+\label{Table:midrule} \\ \toprule
+%\hline \multicolumn{1}{|c|}{\textbf{First column}} & 
+\multicolumn{1}{c|}{\textbf{Second column}} & 
+\multicolumn{1}{c|}{\textbf{Third column}} \\ \hline 
+%\endfirsthead
+
+\textbf{Kolom pertama} &
+\textbf{Kolom kedua} &
+\textbf{Kolom ketiga} \\  \midrule
+\endfirsthead
+
+
+\multicolumn{3}{c}%
+{{ \tablename\ \thetable{} -- 
+dilanjutkan dari halaman sebelumnya}} \\
+\midrule \textbf{Kolom pertama} & \textbf{Kolom kedua} & 
+\textbf{Kolom ketiga} \\ \midrule
+\endhead
+
+\hline \multicolumn{3}{@{}r@{}}{{Berlanjut ke 
+halaman berikutnya}} \\ 
+\midrule
+\endfoot
+
+\bottomrule
+\endlastfoot
+
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+\end{longtable}
+\end{center}
+\end{verbatim}
+\begin{center}
+\begin{longtable}{@{}lll@{}}
+\caption{Contoh tabel lebih dari satu halaman}  
+\label{Table:midrule} \\ \toprule
+%\hline \multicolumn{1}{|c|}{\textbf{First column}} & \multicolumn{1}{c|}{\textbf{Second column}} & \multicolumn{1}{c|}{\textbf{Third column}} \\ \hline 
+%\endfirsthead
+
+\textbf{Kolom pertama} &
+\textbf{Kolom kedua} &
+\textbf{Kolom ketiga} \\  \midrule
+\endfirsthead
+
+
+\multicolumn{3}{c}%
+{{ \tablename\ \thetable{} -- dilanjutkan dari halaman sebelumnya}} \\
+\midrule \textbf{Kolom pertama} & \textbf{Kolom kedua} & \textbf{Kolom ketiga} \\ \midrule
+\endhead
+
+\hline \multicolumn{3}{@{}r@{}}{{Berlanjut ke halaman berikutnya}} \\ \midrule
+\endfoot
+
+\bottomrule
+\endlastfoot
+
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+\end{longtable}
+\end{center}
+
+Berikut adalah cara untuk memperoleh
+Tabel~\ref{Table:hline}
+\begin{verbatim}
+\begin{center}
+\begin{longtable}{|l|l|l|}
+\caption{A sample long table.}  
+\label{Table:hline} \\
+\hline \multicolumn{1}{|c|}{\textbf{First column}} & 
+\multicolumn{1}{c|}{\textbf{Second column}} & 
+\multicolumn{1}{c|}{\textbf{Third column}} \\ \hline 
+\endfirsthead
+
+\multicolumn{3}{c}%
+{{\bfseries \tablename\ \thetable{} -- 
+continued from previous page}} \\
+\hline \multicolumn{1}{|c|}{\textbf{First column}} & 
+\multicolumn{1}{c|}{\textbf{Second column}} & 
+\multicolumn{1}{c|}{\textbf{Third column}} \\ \hline 
+\endhead
+
+\hline \multicolumn{3}{|r|}{{
+Continued on next page}} \\ \hline
+\endfoot
+
+\hline \hline
+\endlastfoot
+
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+\end{longtable}
+\end{center}
+\end{verbatim}
+\begin{center}
+\begin{longtable}{|l|l|l|}
+\caption{A sample long table.}  
+\label{Table:hline} \\
+\hline \multicolumn{1}{|c|}{\textbf{First column}} & \multicolumn{1}{c|}{\textbf{Second column}} & \multicolumn{1}{c|}{\textbf{Third column}} \\ \hline 
+\endfirsthead
+
+\multicolumn{3}{c}%
+{{\bfseries \tablename\ \thetable{} -- continued from previous page}} \\
+\hline \multicolumn{1}{|c|}{\textbf{First column}} & \multicolumn{1}{c|}{\textbf{Second column}} & \multicolumn{1}{c|}{\textbf{Third column}} \\ \hline 
+\endhead
+
+\hline \multicolumn{3}{|r|}{{Continued on next page}} \\ \hline
+\endfoot
+
+\hline \hline
+\endlastfoot
+
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+One & abcdef ghjijklmn & 123.456778 \\
+\end{longtable}
+\end{center}
+
+
+\section{Penggunaan multicolumn dan multirow}
+
+
+  
+\begin{table}[htbp]
+  \caption{Contoh tabel yang menggunakan multicolumn dan multirow sekaligus}
+  \label{Table:multicolrow}
+\begin{tabular}{|l|l|l|l|}\hline
+  \multirow{10}{*}{numeric literals} & \multirow{5}{*}{integers} & in decimal & \verb|8743| \\ \cline{3-4}
+  & & \multirow{2}{*}{in octal} & \verb|0o7464| \\ \cline{4-4}
+  & & & \verb|0O103| \\ \cline{3-4}
+  & & \multirow{2}{*}{in hexadecimal} & \verb|0x5A0FF| \\ \cline{4-4}
+  & & & \verb|0xE0F2| \\ \cline{2-4}
+  & \multirow{5}{*}{fractionals} & \multirow{5}{*}{in decimal} & \verb|140.58| \\ \cline{4-4}
+  & & & \verb|8.04e7| \\ \cline{4-4}
+  & & & \verb|0.347E+12| \\ \cline{4-4}
+  & & & \verb|5.47E-12| \\ \cline{4-4}
+  & & & \verb|47e22| \\ \cline{1-4}
+  \multicolumn{3}{|l|}{\multirow{3}{*}{char literals}} & \verb|'H'| \\ \cline{4-4}
+  \multicolumn{3}{|l|}{} & \verb|'\n'| \\ \cline{4-4}          %% here
+  \multicolumn{3}{|l|}{} & \verb|'\x65'| \\ \cline{1-4}        %% here
+  \multicolumn{3}{|l|}{\multirow{2}{*}{string literals}} & \verb|"bom dia"| \\ \cline{4-4}
+  \multicolumn{3}{|l|}{} & \verb|"ouro preto\nmg"| \\ \cline{1-4}          %% here
+\end{tabular}
+\end{table}
+
+Tabel~\ref{Table:multicolrow} menunjukkan contoh
+untuk suatu susunan tabel yang memerlukan
+multicolumn dan multirow.
+Tabel~\ref{Table:multicolrow} dapat diperoleh dengan:
+\begin{verbatim}
+\begin{table}[htbp]
+  \caption{Contoh tabel yang menggunakan 
+multicolumn dan multirow sekaligus}
+  \label{Table:multicolrow}
+\begin{tabular}{|l|l|l|l|}\hline
+  \multirow{10}{*}{numeric literals} & 
+\multirow{5}{*}{integers} & in decimal & 
+\verb|8743| \\ \cline{3-4}
+  & & \multirow{2}{*}{in octal} & 
+\verb|0o7464| \\ \cline{4-4}
+  & & & \verb|0O103| \\ \cline{3-4}
+  & & \multirow{2}{*}{in hexadecimal} & 
+\verb|0x5A0FF| \\ \cline{4-4}
+  & & & \verb|0xE0F2| \\ \cline{2-4}
+  & \multirow{5}{*}{fractionals} & 
+\multirow{5}{*}{in decimal} & \verb|140.58| \\ \cline{4-4}
+  & & & \verb|8.04e7| \\ \cline{4-4}
+  & & & \verb|0.347E+12| \\ \cline{4-4}
+  & & & \verb|5.47E-12| \\ \cline{4-4}
+  & & & \verb|47e22| \\ \cline{1-4}
+  \multicolumn{3}{|l|}{\multirow{3}{*}{char literals}} & 
+\verb|'H'| \\ \cline{4-4}
+  \multicolumn{3}{|l|}{} & \verb|'\n'| \\ \cline{4-4}          
+%% here
+  \multicolumn{3}{|l|}{} & \verb|'\x65'| \\ \cline{1-4}        
+%% here
+  \multicolumn{3}{|l|}{\multirow{2}{*}{string literals}} & 
+\verb|"bom dia"| \\ \cline{4-4}
+  \multicolumn{3}{|l|}{} & \verb|"ouro preto\nmg"| \\ 
+\cline{1-4}          %% here
+\end{tabular}
+\end{table}
+\end{verbatim}
